@@ -21,7 +21,7 @@ public class Lista_alumnos {
         while (tabla.next()) {  
             Alumno alu= new Alumno();
             alu.CargarDatos(tabla.getInt("id"),tabla.getInt("dni"),tabla.getString("apellido"),tabla.getString("nombre"),tabla.getDate("fecha_nac"),tabla.getBoolean("sexo"),tabla.getString("direccion"),
-                    tabla.getInt("telefono"),tabla.getInt("celular"),tabla.getString("email"),tabla.getBoolean("activo"));
+                    tabla.getInt("telefono"),tabla.getLong("celular"),tabla.getString("email"),tabla.getBoolean("activo"));
             lista_alumnos.add(alu);
         } 
     }
@@ -45,7 +45,7 @@ public class Lista_alumnos {
 
     public void agregar(Alumno a) throws SQLException {
         //AGREGA EL OBJETO DOCENTE A LA LISTA
-        a.id=lista_alumnos.size();
+        a.id=lista_alumnos.size()+1;
         lista_alumnos.add(a);
         //GRABA EL OBJETO DOCENTE
         Conexion cdb= new Conexion();  

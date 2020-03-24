@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author marce
@@ -18,13 +17,14 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Materia
+     *
      * @throws java.sql.SQLException
      */
-    public InterfazTribunal() throws SQLException{
-    initComponents();
-        materia_selecionada=new Materia();
+    public InterfazTribunal() throws SQLException {
+        initComponents();
+        materia_selecionada = new Materia();
         this.actualizartabla("");
- //       this.actualizartabla2();
+        //       this.actualizartabla2();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -99,7 +99,7 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
                 .addGap(91, 91, 91)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -342,13 +342,13 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBregistrarActionPerformed
 
-    
+
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
- 
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jBborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBborrarActionPerformed
@@ -377,7 +377,7 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBborrarActionPerformed
 
-    
+
     private void jtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtbuscarActionPerformed
@@ -422,9 +422,9 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox2FocusLost
 
     private void jtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtbuscarKeyTyped
-  
+
     }//GEN-LAST:event_jtbuscarKeyTyped
-    
+
     private void rellenarcombomaterias() throws SQLException {
         ArrayList<Materia> lm = Principal.escuela.gm.listarMateria("");
         Iterator<Materia> itrusu = lm.iterator();
@@ -443,8 +443,7 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
             contador++;
         }
     }
-    
-   
+
     private void actualizartabla(String a) throws SQLException {
         ArrayList<Docente> ld = Principal.escuela.gd.listarDocente(a);
         Iterator<Docente> itrusu = ld.iterator();
@@ -470,7 +469,7 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
         this.jTable1.setModel(modelo);
     }
 
-    private void actualizartabla2() throws SQLException{
+    private void actualizartabla2() throws SQLException {
         int curso;
         String nombre;
         curso = Integer.parseInt((String) this.jComboBox1.getSelectedItem());
@@ -505,7 +504,7 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
     }
 
     private Materia materia_selecionada;
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBborrar;
     private javax.swing.JButton jBregistrar;

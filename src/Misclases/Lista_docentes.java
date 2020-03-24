@@ -21,7 +21,7 @@ public class Lista_docentes {
         while (tabla.next()) {  
             Docente doc= new Docente();
             doc.CargarDatos(tabla.getInt("id"),tabla.getInt("dni"),tabla.getString("apellido"),tabla.getString("nombre"),tabla.getDate("fecha_nac"),tabla.getBoolean("sexo"),tabla.getString("direccion"),
-                    tabla.getInt("telefono"),tabla.getInt("celular"),tabla.getString("email"),tabla.getBoolean("activo"));
+                    tabla.getInt("telefono"),tabla.getLong("celular"),tabla.getString("email"),tabla.getBoolean("activo"));
             lista_docentes.add(doc);
         } 
     }
@@ -45,7 +45,7 @@ public class Lista_docentes {
 
     public void agregar(Docente d) throws SQLException {
         //AGREGA EL OBJETO DOCENTE A LA LISTA
-        d.id=lista_docentes.size();
+        d.id=lista_docentes.size()+1;
         lista_docentes.add(d);
         //GRABA EL OBJETO DOCENTE
         Conexion cdb= new Conexion();  
@@ -73,9 +73,8 @@ public class Lista_docentes {
         cdb.actualizar(d);
         cargarlista("");
     }
-
     
-    public ArrayList<Docente> listar(String a) throws SQLException{
+    public ArrayList<Docente> listar(String a) throws SQLException {
         cargarlista(a);
         return lista_docentes;
     }

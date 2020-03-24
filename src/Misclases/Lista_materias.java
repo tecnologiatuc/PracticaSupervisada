@@ -8,9 +8,10 @@ import java.util.Iterator;
 
 public class Lista_materias {
 
-    private final ArrayList<Materia> lista_materias = new ArrayList<>();
+    private final ArrayList<Materia> lista_materias;
 
     public Lista_materias() throws SQLException {
+        this.lista_materias = new ArrayList<>();
         cargarlista("");
     }
 

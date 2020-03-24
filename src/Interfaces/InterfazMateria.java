@@ -344,12 +344,12 @@ public class InterfazMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtmateriaActionPerformed
 
     private void jBregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBregistrarActionPerformed
-    //boton que graba el alta o la actualizacion del docente.
-    //aqui va alta docente
-     try {
-        Principal.escuela.gm.altaMateria(capturar_datos());
+        //boton que graba el alta o la actualizacion del docente.
+        //aqui va alta docente
+        try {
+            Principal.escuela.gm.altaMateria(capturar_datos());
         } catch (SQLException ex) {
-        Logger.getLogger(InterfazMateria.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InterfazMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             actualizartabla("");
@@ -370,37 +370,36 @@ public class InterfazMateria extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBlistarActionPerformed
 
-    private void actualizartabla(String a) throws SQLException{
+    private void actualizartabla(String a) throws SQLException {
         ArrayList<Materia> lm = Principal.escuela.gm.listarMateria(a);
         Iterator<Materia> itrusu = lm.iterator();
         Integer contador;
         contador = 0;
-        DefaultTableModel modelo=new DefaultTableModel();
+        DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("CURSO");
         modelo.addColumn("MATERIA");
-        modelo.addColumn("ACTIVO");        
-        while(itrusu.hasNext()){
+        modelo.addColumn("ACTIVO");
+        while (itrusu.hasNext()) {
             itrusu.next();
-            String fila[]=new String[4];
-            fila[0]=Integer.toString(lm.get(contador).id);
-            fila[1]=Integer.toString(lm.get(contador).curso);
-            fila[2]=lm.get(contador).nombre;
-            fila[3]=String.valueOf(lm.get(contador).activo);
+            String fila[] = new String[4];
+            fila[0] = Integer.toString(lm.get(contador).id);
+            fila[1] = Integer.toString(lm.get(contador).curso);
+            fila[2] = lm.get(contador).nombre;
+            fila[3] = String.valueOf(lm.get(contador).activo);
             modelo.addRow(fila);
             contador++;
-       }
-       this.jTable1.setModel(modelo);
+        }
+        this.jTable1.setModel(modelo);
     }
-    
-    
-    
+
+
     private void jtidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtidKeyTyped
-            // TODO add your handling code here:
-            char c=evt.getKeyChar();
-            if(Character.isAlphabetic(c)){
-                evt.consume();
-            }
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (Character.isAlphabetic(c)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jtidKeyTyped
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
@@ -408,28 +407,26 @@ public class InterfazMateria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jtmateriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtmateriaKeyTyped
-           char c=evt.getKeyChar();
-            if(Character.isDigit(c)){
-                evt.consume();
-            }   
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jtmateriaKeyTyped
 
     private void jtidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtidFocusLost
-        
+
     }//GEN-LAST:event_jtidFocusLost
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         habilitarCampos();
-        int filaselec=this.jTable1.getSelectedRow();
-        this.jtid.setText(this.jTable1.getValueAt(filaselec,0).toString());
+        int filaselec = this.jTable1.getSelectedRow();
+        this.jtid.setText(this.jTable1.getValueAt(filaselec, 0).toString());
         this.jtid.setEnabled(false);
-        int valor_inicial=Integer.parseInt((String) this.jTable1.getValueAt(filaselec,1));
+        int valor_inicial = Integer.parseInt((String) this.jTable1.getValueAt(filaselec, 1));
         this.jScurso.setValue(valor_inicial);
- //      this.jScurso.setValue(20);
+        this.jtmateria.setText(this.jTable1.getValueAt(filaselec, 2).toString());
+        this.jcbactivo.setSelected(Boolean.valueOf(this.jTable1.getValueAt(filaselec, 3).toString()));
 
- this.jtmateria.setText(this.jTable1.getValueAt(filaselec,2).toString());
-        this.jcbactivo.setSelected(Boolean.valueOf(this.jTable1.getValueAt(filaselec,3).toString()));
- 
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
@@ -440,9 +437,10 @@ public class InterfazMateria extends javax.swing.JInternalFrame {
 
     private void jBeditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeditarActionPerformed
         try {
-            Principal.escuela.gm.actualizaMateria(capturar_datos());} 
-        catch (SQLException ex) {
-            Logger.getLogger(InterfazMateria.class.getName()).log(Level.SEVERE, null, ex);}
+            Principal.escuela.gm.actualizaMateria(capturar_datos());
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazMateria.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             actualizartabla("");
         } catch (SQLException ex) {
@@ -478,34 +476,34 @@ public class InterfazMateria extends javax.swing.JInternalFrame {
             Logger.getLogger(InterfazMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         this.jtmateria.setText("");
         this.jtid.setText("");
         this.jcbactivo.setSelected(true);
     }
 
-    private void habilitarCampos(){
+    private void habilitarCampos() {
         this.jtmateria.setEnabled(true);
-    //    this.jtid.setEnabled(true);
         this.jScurso.setEnabled(true);
         this.jcbactivo.setEnabled(true);
     }
-    
-    private Materia capturar_datos() throws SQLException{
-        Materia m=new Materia();
-        int id,curso;
-        if(!"".equals(this.jtid.getText().trim())){
-            id=Integer.parseInt(this.jtid.getText());}
-        else{
-            id=0;}
-        curso=Integer.parseInt(this.jScurso.getValue().toString());
-        String nombre=this.jtmateria.getText().trim();
-        Boolean act=this.jcbactivo.isSelected();
-        m.CargarDatos(id,curso,nombre,act);
+
+    private Materia capturar_datos() throws SQLException {
+        Materia m = new Materia();
+        int id, curso;
+        if (!"".equals(this.jtid.getText().trim())) {
+            id = Integer.parseInt(this.jtid.getText());
+        } else {
+            id = 0;
+        }
+        curso = Integer.parseInt(this.jScurso.getValue().toString());
+        String nombre = this.jtmateria.getText().trim();
+        Boolean act = this.jcbactivo.isSelected();
+        m.CargarDatos(id, curso, nombre, act);
         return m;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBborrar;
     private javax.swing.JButton jBeditar;

@@ -42,6 +42,11 @@ public class Gestion_docentes {
         return docencontrado;
     }
 
+    public Docente buscarDocente(int dni) {
+        Docente docencontrado = ld.buscar(dni);
+        return docencontrado;
+    }
+
     public void actualizaDocente(Docente doc) throws SQLException {
         Docente docaux;
         docaux = buscarDocente(doc);

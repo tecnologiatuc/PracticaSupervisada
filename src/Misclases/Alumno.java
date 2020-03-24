@@ -7,7 +7,7 @@ public class Alumno extends Persona {
    public void Alumno() {
     }
    
-   public void CargarDatos(int i,int d, String ape, String nom, Date fecha_nac, boolean s, String dir, int tel, int cel, String mail,boolean act)
+   public void CargarDatos(int i,int d, String ape, String nom, Date fecha_nac, boolean s, String dir, int tel, long cel, String mail,boolean act)
     {
         id=i;
         dni=d;

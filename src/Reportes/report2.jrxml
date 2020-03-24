@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="421" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ac48d91-d924-4368-85bd-42eff3982c1c">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idalu" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     Row_Number() Over(Order By Alumnos."Apellido") as num,
+     Alumnos."id" As Alumnos_id,
+     Alumnos."dni" AS Alumnos_dni,
+     Alumnos."apellido" AS Alumnos_apellido,
+     Alumnos."nombre" AS Alumnos_nombre,
+     Mesas."Fecha" AS Mesas_Fecha,
+     Mesas."Horario" AS Mesas_Horario,
+     Mesas."Condicion" AS Mesas_Condicion,
+     Materias."curso" AS Materias_curso,
+     Materias."materia" AS Materias_materia,
+     Permisos."nro_permiso" AS Permiso_nro_permiso,
+     Permisos."activo" AS Permisos_activo
+ FROM
+     "dbo"."Alumnos" Alumnos INNER JOIN "dbo"."Examenes" Alumnos_Mesa ON Alumnos."id" = Alumnos_Mesa."Id_Alumno"
+     INNER JOIN "dbo"."Mesas" Mesas ON Alumnos_Mesa."Id_Mesa" = Mesas."Id_Mesa"
+     INNER JOIN "dbo"."Materias" Materias ON Mesas."Id_Materia" = Materias."id_materia" 
+INNER JOIN "dbo"."Permisos" Permisos ON Alumnos."id" = Permisos."id_alumno"
+
+WHERE
+     Alumnos."id"=$P{idalu} AND Permisos."Activo"=1
+ORDER BY
+	Mesas."fecha", Materias."curso", Materias."materia"]]>
+	</queryString>
+	<field name="num" class="java.lang.Long"/>
+	<field name="Alumnos_id" class="java.lang.Integer"/>
+	<field name="Alumnos_dni" class="java.lang.Integer"/>
+	<field name="Alumnos_apellido" class="java.lang.String"/>
+	<field name="Alumnos_nombre" class="java.lang.String"/>
+	<field name="Mesas_Fecha" class="java.sql.Date"/>
+	<field name="Mesas_Horario" class="java.lang.String"/>
+	<field name="Mesas_Condicion" class="java.lang.String"/>
+	<field name="Materias_curso" class="java.lang.Integer"/>
+	<field name="Materias_materia" class="java.lang.String"/>
+	<field name="Permiso_nro_permiso" class="java.lang.Integer"/>
+	<field name="Permisos_activo" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="65" y="39" width="424" height="21" uuid="42a8ff8b-75f9-4614-b91c-2d43c1fac127"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERMISO DE EXAMEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="10" width="432" height="27" uuid="74a483ee-968f-447f-a7ac-84cc5e5e8f82"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESCUELA SECUNDARIA CRUCERO BELGRANO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="14" width="555" height="1" uuid="af8943f8-e3bf-4340-a030-931365911446"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="57" width="555" height="1" uuid="b381fdd2-a5b5-4ba5-9a17-987386b1328e"/>
+			</line>
+			<image>
+				<reportElement x="509" y="7" width="45" height="50" uuid="61a2e696-0fbb-4973-b5b3-0c12441f55f7"/>
+				<imageExpression><![CDATA["C:\\Users\\marce\\Dropbox\\Dropbox\\Colegios\\Escuela Secudaria Crucero Belgrano\\Crucero  Belgrano. 20180302_001111.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="46" y="0" width="46" height="20" uuid="0eb026e0-d50c-4519-9aeb-a1261990c3d0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Alumnos_dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="0" width="107" height="20" uuid="41f1d618-f0bf-49bf-a25b-569fdec8024c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Alumnos_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="123" height="20" uuid="2f2f3786-912f-4538-8c14-afeb07622937"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Alumnos_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="46" height="18" forecolor="#000000" backcolor="#CCCCCC" uuid="33862286-345e-4966-909a-6828c2395c6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="95" y="0" width="56" height="18" forecolor="#000000" backcolor="#CCCCCC" uuid="60b3a0b4-c5ea-4c5c-99a0-e2fcccf496ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="262" y="0" width="56" height="18" forecolor="#000000" backcolor="#CCCCCC" uuid="ff73fd0a-da02-4230-91aa-98f51c4d3a8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="448" y="0" width="70" height="18" forecolor="#000000" backcolor="#CCCCCC" uuid="b0e35e4c-8db5-4aa7-a5ef-1a4e5432b325"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Permiso N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="518" y="0" width="27" height="20" uuid="6e26bae4-179b-4d78-b51c-b57bdf6544e6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Permiso_nro_permiso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="68" y="2" width="101" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="3db32672-819a-4576-91a0-1b1206024389"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ASIGNATURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="26" y="2" width="40" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="1265d477-fa49-4e19-a5ed-d16f30667a0f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CURSO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="171" y="2" width="51" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="c2102b23-fd15-473f-9bcf-4af21453c7e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="227" y="2" width="47" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="cf6e3b3e-2da1-4ed8-9a3c-2e44c9d67a7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[HORARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="277" y="2" width="80" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="8efd45ba-6853-4dad-a152-7021b1494ca7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CONDICION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="2" width="21" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="614ca464-05c7-4556-a2bc-b18ae5c99906"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="360" y="2" width="109" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="853e588a-065d-4811-900b-9700a9029a7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CALIFICACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="472" y="2" width="82" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="9f0c3416-cfb1-4c51-a25f-be32777f0e2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FIRMA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="69" y="0" width="100" height="20" uuid="7d64e6c6-028c-4c78-91e0-3b9d22b08b78"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Materias_materia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="28" y="0" width="33" height="20" uuid="9148c1a3-3ea3-4db7-a641-198e7ab83dc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Materias_curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="0" width="49" height="20" uuid="aaecba5c-0e0e-4503-a881-6b0676339d6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Mesas_Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="0" width="45" height="20" uuid="ba6656e7-16b7-42cf-88a4-ad5469572aa4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Mesas_Horario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="77" height="20" uuid="2439a986-382e-46c1-9208-63ca6e5e6702"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Mesas_Condicion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="366" y="17" width="100" height="1" uuid="7fcfcec0-6dc2-4388-be8f-f097b12093e3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="480" y="16" width="74" height="1" uuid="7a962837-9028-4b18-95fc-37d73044e2ab"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="3014d1d8-004b-4121-8ef7-f4597b628062"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="5" y="1" width="19" height="20" uuid="8d342c9a-dbcc-41ae-a539-103a7828562e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="4" width="116" height="20" uuid="4e2f3bc1-db89-4c00-be3c-11a1edc70ccf"/>
+				<text><![CDATA[San Miguel de Tucumán,]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="121" y="4" width="100" height="20" uuid="5926ab14-b3f4-4928-92c4-ae245766289b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="267" y="34" width="28" height="20" uuid="2f6e6407-c55c-4c2f-9d1c-b4c14757bf96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Sello]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="34" width="100" height="20" uuid="b2227abd-c76a-4b6d-bd90-3670051dae53"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma del responsable]]></text>
+			</staticText>
+			<line>
+				<reportElement x="443" y="31" width="100" height="1" uuid="79bfd9f7-bfbd-46b1-a260-60f670ec4895"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

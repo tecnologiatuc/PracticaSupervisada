@@ -12,11 +12,10 @@ public class Materia {
     public int curso;
     public String nombre;
     public boolean activo;
-    private ArrayList<Docente> lista_docente;
+    private final ArrayList<Docente> lista_docente;
 
     public Materia() throws SQLException {
         lista_docente = new ArrayList();
-    //    cargarlista();
     }
 
     
@@ -49,7 +48,6 @@ public class Materia {
         Iterator<Docente> itrusu = lista_docente.iterator();
         Integer contador;
         contador = 0;
-        //busca en el vector el usuario para acceder al sistema
         Docente doc = new Docente();
         while (itrusu.hasNext()) {
             itrusu.next();

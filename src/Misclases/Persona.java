@@ -18,7 +18,7 @@ public class Persona {
 
     public int telefono;
 
-    public int celular;
+    public long celular;
 
     public boolean sexo;
 

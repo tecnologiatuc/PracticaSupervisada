@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="1008" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e79b16f-21bd-4d9f-9c7c-d5f4cb4a7bf8">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="37"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="idmesa" class="java.lang.String"/>
 	<queryString>
@@ -144,8 +144,8 @@ ORDER BY Alumnos."Apellido",Alumnos."Nombre"]]>
 				<text><![CDATA[ESCUELA SECUNDARIA CRUCERO BELGRANO]]></text>
 			</staticText>
 			<image>
-				<reportElement x="524" y="4" width="45" height="50" uuid="0951c9a5-50f4-44d6-9962-f4d9154e6dd6"/>
-				<imageExpression><![CDATA["C:\\Users\\marce\\Dropbox\\Dropbox\\Colegios\\Escuela Secudaria Crucero Belgrano\\Crucero  Belgrano. 20180302_001111.jpg"]]></imageExpression>
+				<reportElement x="524" y="4" width="58" height="50" uuid="0951c9a5-50f4-44d6-9962-f4d9154e6dd6"/>
+				<imageExpression><![CDATA["C:\\ProyectoPS\\SistemaEscuela\\src\\Recursos\\icono.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

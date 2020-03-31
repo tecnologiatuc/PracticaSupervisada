@@ -37,14 +37,14 @@ public class Mesa {
         tribunal.actualizar(p, v1, v2);
     }
 
-    public void cargar(int i, int id_materia, Date f, String h, String c, boolean a,int l,int fo) throws SQLException {
+    public void cargar(int i, int id_materia, Date f, String h, String c, boolean a, int l, int fo) throws SQLException {
         id = i;
         fecha = f;
         horario = h;
         condicion = c;
         activo = a;
-        libro=l;
-        folio=fo;
+        libro = l;
+        folio = fo;
         cargarmateria(id_materia);
         cargarlistaalumnos();
     }
@@ -104,7 +104,7 @@ public class Mesa {
         libro = lib;
         folio = fol;
         activo = false;
-        cerrada=true;
-   }
+        cerrada = true;
+    }
 
 }

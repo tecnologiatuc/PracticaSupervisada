@@ -26,7 +26,7 @@ public class Lista_materias {
             lista_materias.add(mat);
         }
     }
-    
+
     public Materia buscar(Materia m) throws SQLException {
         Iterator<Materia> itrusu = lista_materias.iterator();
         Integer contador;
@@ -36,16 +36,16 @@ public class Lista_materias {
         Materia mat = new Materia();
         while (itrusu.hasNext()) {
             itrusu.next();
-            auxmat=lista_materias.get(contador);
-            if ((auxmat.curso == m.curso)&&(auxmat.nombre.trim().equals(m.nombre.trim()))) {
+            auxmat = lista_materias.get(contador);
+            if ((auxmat.curso == m.curso) && (auxmat.nombre.trim().equals(m.nombre.trim()))) {
                 mat = lista_materias.get(contador);
             }
             contador++;
         }
         return mat;
     }
-    
-       public Materia buscar(int curso,String nombre) throws SQLException {
+
+    public Materia buscar(int curso, String nombre) throws SQLException {
         Iterator<Materia> itrusu = lista_materias.iterator();
         Integer contador;
         contador = 0;
@@ -54,16 +54,16 @@ public class Lista_materias {
         Materia mat = new Materia();
         while (itrusu.hasNext()) {
             itrusu.next();
-            auxmat=lista_materias.get(contador);
-            if ((auxmat.curso == curso)&&(auxmat.nombre.trim().equals(nombre.trim()))) {
+            auxmat = lista_materias.get(contador);
+            if ((auxmat.curso == curso) && (auxmat.nombre.trim().equals(nombre.trim()))) {
                 mat = lista_materias.get(contador);
             }
             contador++;
         }
         return mat;
     }
-    
-   public Materia buscar(int id) throws SQLException {
+
+    public Materia buscar(int id) throws SQLException {
         Iterator<Materia> itrusu = lista_materias.iterator();
         Integer contador;
         contador = 0;
@@ -72,7 +72,7 @@ public class Lista_materias {
         Materia mat = new Materia();
         while (itrusu.hasNext()) {
             itrusu.next();
-            auxmat=lista_materias.get(contador);
+            auxmat = lista_materias.get(contador);
             if (auxmat.id == id) {
                 mat = lista_materias.get(contador);
             }
@@ -83,7 +83,7 @@ public class Lista_materias {
 
     public void agregar(Materia m) throws SQLException {
         //AGREGA EL OBJETO DOCENTE A LA LISTA
-        m.id = 1+lista_materias.size();
+        m.id = 1 + lista_materias.size();
         lista_materias.add(m);
         //GRABA EL OBJETO DOCENTE
         Conexion cdb = new Conexion();
@@ -92,21 +92,6 @@ public class Lista_materias {
     }
 
     public void actualizar(Materia m) throws SQLException {
-        //ACTUALIZAR EL OBJETO DOCENTE A LA LISTA
-     /*   Iterator<Materia> itrusu = lista_materias.iterator();
-        Integer contador;
-        contador = 0;
-        //busca en el vector el usuario para acceder al sistema
-        Materia mat = new Materia();
-        while (itrusu.hasNext()) {
-            itrusu.next();
-            if (m.id == lista_materias.get(contador).id) {
-                lista_materias.set(contador, m);
-            }
-            contador++;
-        }
-*/     
-//GRABA EL OBJETO DOCENTE
         Conexion cdb = new Conexion();
         cdb.actualizar(m);
         cargarlista("");

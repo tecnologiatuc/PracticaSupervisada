@@ -18,7 +18,6 @@ public class Materia {
         lista_docente = new ArrayList();
     }
 
-    
     public void CargarDatos(int i, int c, String n, boolean a) throws SQLException {
         id = i;
         curso = c;
@@ -65,7 +64,7 @@ public class Materia {
         cdb.insertar(id_docente, id);
         cargarlista();
     }
-    
+
     public void borrarDocente(int id_docente) throws SQLException {
         //AGREGA EL OBJETO DOCENTE A LA LISTA
         Conexion cdb = new Conexion();

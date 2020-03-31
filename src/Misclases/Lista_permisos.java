@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Misclases;
 
 import Conexiondb.Conexion;
@@ -22,10 +17,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-/**
- *
- * @author marce
- */
 public class Lista_permisos {
 
     private final ArrayList<Permiso> lista_permisos;
@@ -120,9 +111,7 @@ public class Lista_permisos {
             JasperViewer preimpresion = new JasperViewer(jp, false);
             preimpresion.setTitle("PREIMPRESION ACTA VOLANTE");
             preimpresion.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Lista_permisos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JRException ex) {
+        } catch (SQLException | JRException ex) {
             Logger.getLogger(Lista_permisos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

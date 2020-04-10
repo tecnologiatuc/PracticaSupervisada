@@ -425,27 +425,29 @@ public class InterfazTribunal extends javax.swing.JInternalFrame {
 
     private void actualizartabla(String a) throws SQLException {
         ArrayList<Docente> ld = Principal.escuela.gd.listarDocente(a);
-        Iterator<Docente> itrusu = ld.iterator();
-        Integer contador;
-        contador = 0;
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("DNI");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("NOMBRE");
-        while (itrusu.hasNext()) {
-            itrusu.next();
-            if (ld.get(contador).activo) {
-                String fila[] = new String[5];
-                fila[0] = Integer.toString(ld.get(contador).id);
-                fila[1] = Integer.toString(ld.get(contador).dni);
-                fila[2] = ld.get(contador).apellido;
-                fila[3] = ld.get(contador).nombre;
-                modelo.addRow(fila);
+        if (ld != null) {
+            Iterator<Docente> itrusu = ld.iterator();
+            Integer contador;
+            contador = 0;
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID");
+            modelo.addColumn("DNI");
+            modelo.addColumn("APELLIDO");
+            modelo.addColumn("NOMBRE");
+            while (itrusu.hasNext()) {
+                itrusu.next();
+                if (ld.get(contador).activo) {
+                    String fila[] = new String[5];
+                    fila[0] = Integer.toString(ld.get(contador).id);
+                    fila[1] = Integer.toString(ld.get(contador).dni);
+                    fila[2] = ld.get(contador).apellido;
+                    fila[3] = ld.get(contador).nombre;
+                    modelo.addRow(fila);
+                }
+                contador++;
             }
-            contador++;
+            this.jTable1.setModel(modelo);
         }
-        this.jTable1.setModel(modelo);
     }
 
     private void actualizartabla2() throws SQLException {

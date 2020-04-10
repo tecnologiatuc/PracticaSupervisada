@@ -360,9 +360,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     public static void main(String args[]) throws SQLException {
-
         new Principal().setVisible(true);
-
     }
 
     public VentanaInicio ventanainicio;

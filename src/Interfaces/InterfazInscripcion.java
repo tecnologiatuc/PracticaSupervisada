@@ -531,51 +531,55 @@ public class InterfazInscripcion extends javax.swing.JInternalFrame {
 
     private void actualizartabla(String a) throws SQLException {
         ArrayList<Alumno> la = Principal.escuela.ga.listarAlumno(a);
-        Iterator<Alumno> itrusu = la.iterator();
-        Integer contador;
-        contador = 0;
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("DNI");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("F.N.");
-        while (itrusu.hasNext()) {
-            itrusu.next();
-            String fila[] = new String[5];
-            fila[0] = Integer.toString(la.get(contador).id);
-            fila[1] = Integer.toString(la.get(contador).dni);
-            fila[2] = la.get(contador).apellido;
-            fila[3] = la.get(contador).nombre;
-            Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-            fila[4] = formatter.format(la.get(contador).fecha_nacimiento);
-            modelo.addRow(fila);
-            contador++;
+        if (la != null) {
+            Iterator<Alumno> itrusu = la.iterator();
+            Integer contador;
+            contador = 0;
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID");
+            modelo.addColumn("DNI");
+            modelo.addColumn("APELLIDO");
+            modelo.addColumn("NOMBRE");
+            modelo.addColumn("F.N.");
+            while (itrusu.hasNext()) {
+                itrusu.next();
+                String fila[] = new String[5];
+                fila[0] = Integer.toString(la.get(contador).id);
+                fila[1] = Integer.toString(la.get(contador).dni);
+                fila[2] = la.get(contador).apellido;
+                fila[3] = la.get(contador).nombre;
+                Format formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fila[4] = formatter.format(la.get(contador).fecha_nacimiento);
+                modelo.addRow(fila);
+                contador++;
+            }
+            this.jTable1.setModel(modelo);
         }
-        this.jTable1.setModel(modelo);
     }
 
     public static void actualizartabla2(Mesa mes) throws SQLException {
         ArrayList<Alumno> la = mes.listarAlumnos();
-        Iterator<Alumno> itrusu = la.iterator();
-        Integer contador;
-        contador = 0;
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
-        modelo.addColumn("DNI");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("NOMBRE");
-        while (itrusu.hasNext()) {
-            itrusu.next();
-            String fila[] = new String[4];
-            fila[0] = Integer.toString(la.get(contador).id);
-            fila[1] = Integer.toString(la.get(contador).dni);
-            fila[2] = la.get(contador).apellido;
-            fila[3] = la.get(contador).nombre;
-            modelo.addRow(fila);
-            contador++;
+        if (la != null) {
+            Iterator<Alumno> itrusu = la.iterator();
+            Integer contador;
+            contador = 0;
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID");
+            modelo.addColumn("DNI");
+            modelo.addColumn("APELLIDO");
+            modelo.addColumn("NOMBRE");
+            while (itrusu.hasNext()) {
+                itrusu.next();
+                String fila[] = new String[4];
+                fila[0] = Integer.toString(la.get(contador).id);
+                fila[1] = Integer.toString(la.get(contador).dni);
+                fila[2] = la.get(contador).apellido;
+                fila[3] = la.get(contador).nombre;
+                modelo.addRow(fila);
+                contador++;
+            }
+            InterfazInscripcion.jTable2.setModel(modelo);
         }
-        InterfazInscripcion.jTable2.setModel(modelo);
     }
 
 

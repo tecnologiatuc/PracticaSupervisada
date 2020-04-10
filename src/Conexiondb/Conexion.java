@@ -11,7 +11,6 @@ import Misclases.Examen;
 import Misclases.Materia;
 import Misclases.Mesa;
 import Misclases.Permiso;
-import Misclases.Tribunal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
